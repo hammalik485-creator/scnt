@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCNT — Bold. Elegant. Unforgettable. | Luxury-Inspired Perfumes</title>
+<meta name="description" content="SCNT — luxury-inspired fragrances for men & women. Long-lasting perfumes at a price that makes sense. Free delivery over Rs. 3,000, Cash on Delivery.">
+<link rel="icon" href="logos stuff/fav icon green.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">The SCNT Collection</span>
+      <h1>Bold. Elegant.<br><span class="gold">Unforgettable.</span></h1>
+      <p>Luxury-inspired fragrances crafted to turn heads and last all day — without the luxury price tag.</p>
+      <div class="hero-cta">
+        <a href="shop.html" class="btn btn-dark btn-lg">Shop the Collection</a>
+        <a href="shop.html?cat=packs" class="btn btn-outline btn-lg">Gift Bundles</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img id="heroImg" src="logos stuff/Snct hero page image finl.png" alt="SCNT signature fragrance">
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap trust-grid" id="trustGrid"></div>
+</div>
+
+<!-- BESTSELLERS -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Most Loved</span>
+      <h2>Bestselling Scents</h2>
+      <p>The fragrances our customers keep coming back for.</p>
+    </div>
+    <div class="product-grid" id="bestGrid"></div>
+    <div style="text-align:center;margin-top:2.6rem"><a href="shop.html" class="btn btn-outline btn-lg">View All Fragrances</a></div>
+  </div>
+</section>
+
+<!-- BUNDLES -->
+<section class="bundles section" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Save More</span>
+      <h2>Gift Bundles</h2>
+      <p>Curated sets at a special price — perfect for gifting or building your collection.</p>
+    </div>
+    <div class="product-grid" id="packGrid"></div>
+    <div style="text-align:center;margin-top:2.6rem"><a href="shop.html?cat=packs" class="btn btn-outline btn-lg">View All Bundles</a></div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Find Your Signature</span>
+      <h2>Shop by Collection</h2>
+      <p>Three worlds of scent — pick the one that's unmistakably you.</p>
+    </div>
+    <div class="cats">
+      <a class="cat reveal" href="shop.html?g=Men">
+        <img class="cat-bg" src="Images/1MILLION/1millon.png" alt="Men's fragrances">
+        <div class="cat-body"><span>For Him</span><h3>Men's Fragrances</h3><span class="explore">Explore →</span></div>
+      </a>
+      <a class="cat reveal" href="shop.html?g=Women">
+        <img class="cat-bg" src="Images/JADORE/jorde1.png" alt="Women's fragrances">
+        <div class="cat-body"><span>For Her</span><h3>Women's Fragrances</h3><span class="explore">Explore →</span></div>
+      </a>
+      <a class="cat reveal" href="shop.html?g=Unisex">
+        <img class="cat-bg" src="Images/OUD WOOD/Oud1.png" alt="Unisex fragrances">
+        <div class="cat-body"><span>For Everyone</span><h3>Unisex &amp; Oud</h3><span class="explore">Explore →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+  buildChrome("home");
+  // Trust strip
+  document.getElementById("trustGrid").innerHTML = [
+    [IC.truck, "Free Delivery over " + money(SITE.freeShipOver)],
+    [IC.shield, "Long-Lasting Oils"],
+    [IC.gift, "Cash on Delivery"],
+    [IC.leaf, "Cruelty-Free"]
+  ].map(([i,t]) => `<div class="trust-item">${i}<span>${t}</span></div>`).join("");
+
+  // Grids
+  renderGrid(document.getElementById("bestGrid"), PRODUCTS.filter(p => p.bestseller).slice(0,8));
+  renderGrid(document.getElementById("packGrid"), PACKS.slice(0,4));
+  observeReveals();
+</script>
+</body>
+</html>

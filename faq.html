@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQs | SCNT</title>
+<meta name="description" content="Frequently asked questions about SCNT fragrances — quality, longevity, delivery, Cash on Delivery, ordering and returns.">
+<link rel="icon" href="logos stuff/fav icon green.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="page-head">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a> / FAQs</div>
+    <h1>Frequently Asked Questions</h1>
+    <p>Quick answers to the things customers ask us most.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap info">
+
+    <details class="faq-item" open>
+      <summary>Are these original branded perfumes?</summary>
+      <div class="faq-body">SCNT fragrances are <strong>inspired-by</strong> versions of the world's most iconic scents. We are not affiliated with the original brands. We recreate those scent profiles using premium fragrance oils, so you get a very similar experience at a fraction of the price.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How long does the scent last?</summary>
+      <div class="faq-body">Thanks to our high oil concentration, most fragrances last a full day on skin and even longer on clothing. Longevity varies a little by scent and skin type.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How long does delivery take?</summary>
+      <div class="faq-body">Orders are delivered within <strong>2–3 days after your order is confirmed</strong>. See our <a href="shipping.html" style="border-bottom:1px solid var(--gold-deep)">Shipping &amp; Returns</a> page for full details.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Do you offer Cash on Delivery (COD)?</summary>
+      <div class="faq-body">Yes — Cash on Delivery is available nationwide. You pay when your order arrives at your doorstep.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How do I place an order?</summary>
+      <div class="faq-body">Add the fragrances you love to your bag, then tap <strong>“Order via WhatsApp.”</strong> Your order details are filled in automatically — just send the message and share your name and address to confirm.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>What are the delivery charges?</summary>
+      <div class="faq-body">Delivery is <strong>FREE on orders over Rs. 3,000</strong>. A small flat charge applies below that, confirmed with you on WhatsApp.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can I return or exchange a product?</summary>
+      <div class="faq-body">If an item arrives damaged or incorrect, message us within <strong>3 days of delivery</strong> and we'll replace it. For hygiene reasons, opened or used fragrances can't be returned unless faulty.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Do you sell gift bundles?</summary>
+      <div class="faq-body">Yes! Our <a href="shop.html?cat=packs" style="border-bottom:1px solid var(--gold-deep)">Gift Bundles</a> pair popular scents together at a discounted price — perfect for gifting or building your collection.</div>
+    </details>
+
+    <div class="info-cta">
+      <h3>Still have a question?</h3>
+      <p>We're happy to help — message us directly on WhatsApp.</p>
+      <a class="btn wa-btn btn-lg" id="waContact">Chat on WhatsApp</a>
+    </div>
+
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+  buildChrome("");
+  document.getElementById("waContact").innerHTML = IC.wa + " Chat on WhatsApp";
+  document.getElementById("waContact").href = "https://wa.me/" + SITE.whatsapp;
+  document.getElementById("waContact").target = "_blank";
+</script>
+</body>
+</html>

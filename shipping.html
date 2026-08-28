@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shipping & Returns | SCNT</title>
+<meta name="description" content="SCNT shipping & returns — orders delivered 2–3 days after order, Cash on Delivery available, free delivery over Rs. 3,000.">
+<link rel="icon" href="logos stuff/fav icon green.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="page-head">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Shipping &amp; Returns</div>
+    <h1>Shipping &amp; Returns</h1>
+    <p>Everything you need to know about getting your SCNT.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap info">
+    <p class="info-lead">We keep it simple and fast. Order today, and your fragrance is on its way — with Cash on Delivery available across the country.</p>
+
+    <h3>Delivery time</h3>
+    <p>Orders are delivered within <strong>2–3 days after your order is confirmed</strong>. Once you place an order on WhatsApp, we confirm your details and dispatch right away.</p>
+
+    <h3>Delivery charges</h3>
+    <ul class="info-list">
+      <li><strong>FREE delivery</strong> on all orders over Rs. 3,000.</li>
+      <li>A small flat delivery charge applies on orders below Rs. 3,000 (confirmed on WhatsApp).</li>
+      <li><strong>Cash on Delivery (COD)</strong> available nationwide — pay when your order arrives.</li>
+    </ul>
+
+    <h3>Returns &amp; exchanges</h3>
+    <p>If your item arrives damaged or you received the wrong product, message us within <strong>3 days of delivery</strong> and we'll replace it or make it right. For hygiene reasons, opened or used fragrances can't be returned unless faulty.</p>
+
+    <h3>How to reach us</h3>
+    <p>The fastest way to get help with an order is on WhatsApp — we usually reply within a few hours.</p>
+
+    <div class="info-cta">
+      <h3>Have a question about your order?</h3>
+      <p>Message us on WhatsApp and we'll sort it out.</p>
+      <a class="btn wa-btn btn-lg" id="waContact">Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+  buildChrome("");
+  document.getElementById("waContact").innerHTML = IC.wa + " Chat on WhatsApp";
+  document.getElementById("waContact").href = "https://wa.me/" + SITE.whatsapp;
+  document.getElementById("waContact").target = "_blank";
+</script>
+</body>
+</html>

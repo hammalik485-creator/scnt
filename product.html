@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fragrance | SCNT</title>
+<meta name="description" content="SCNT luxury-inspired fragrance — long-lasting, premium oils. Free delivery over Rs. 3,000, Cash on Delivery.">
+<link rel="icon" href="logos stuff/fav icon green.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<section class="section" style="padding-top:2rem">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="shop.html">Shop</a> / <span id="crumb"></span></div>
+    <div class="pdp" id="pdp"></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">You may also like</span><h2>Complete Your Collection</h2></div>
+    <div class="product-grid" id="related"></div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+  buildChrome("");
+  const id = new URLSearchParams(location.search).get("id");
+  const p = findItem(id);
+
+  if (!p) {
+    document.getElementById("pdp").innerHTML = `<div class="spin" style="grid-column:1/-1">Product not found. <a href="shop.html" style="border-bottom:1px solid">Back to shop</a></div>`;
+  } else {
+    document.title = p.name + " | SCNT";
+    document.getElementById("crumb").textContent = p.name;
+    const priceHtml = p.was
+      ? `<span class="was" style="text-decoration:line-through;color:var(--muted);font-size:1.3rem;margin-right:.6rem">${money(p.was)}</span>${money(p.price)}`
+      : money(p.price);
+
+    document.getElementById("pdp").innerHTML = `
+      <div class="pdp-gallery">
+        <div class="gallery-main"><img id="mainImg" src="${enc(p.images[0])}" alt="${p.name}"></div>
+        <div class="gallery-thumbs" id="thumbs">
+          ${p.images.map((im,i)=>`<button class="${i===0?'active':''}" data-i="${i}"><img src="${enc(im)}" alt="${p.name} ${i+1}"></button>`).join("")}
+        </div>
+      </div>
+      <div class="pdp-info">
+        <span class="eyebrow">${p.gender}${p.count?" · "+p.count+" Bottle Set":""}</span>
+        <h1>${p.name}</h1>
+        ${p.inspired?`<div class="pdp-insp">${p.inspired}</div>`:""}
+        ${p.rating?`<div>${stars(p.rating)} <span style="color:var(--muted);font-size:.85rem">· In stock</span></div>`:""}
+        <div class="pdp-price">${priceHtml}</div>
+        <p class="pdp-desc">${p.desc}</p>
+        ${p.notes?`<div class="notes-block"><h4>Fragrance Notes</h4><div class="notes-pills">${p.notes.map(n=>`<span class="note-pill">${n}</span>`).join("")}</div></div>`:""}
+        <div class="pdp-buy">
+          <div class="qty">
+            <button id="qMinus">−</button><span id="qVal">1</span><button id="qPlus">+</button>
+          </div>
+          <button class="btn btn-dark btn-lg" id="addBtn" style="flex:1">Add to Bag · <span id="btnPrice">${money(p.price)}</span></button>
+        </div>
+        <a class="btn wa-btn btn-block btn-lg" id="buyNow">${IC.wa} Buy Now on WhatsApp</a>
+        <div class="pdp-meta" style="margin-top:1.6rem">
+          <div>${IC.truck}<span>Free delivery on orders over ${money(SITE.freeShipOver)}</span></div>
+          <div>${IC.gift}<span>Cash on Delivery available nationwide</span></div>
+          <div>${IC.shield}<span>Premium long-lasting oils · 50ml</span></div>
+        </div>
+      </div>`;
+
+    // gallery
+    let qty = 1;
+    document.querySelectorAll("#thumbs button").forEach(b => b.onclick = () => {
+      document.getElementById("mainImg").src = enc(p.images[b.dataset.i]);
+      document.querySelectorAll("#thumbs button").forEach(x=>x.classList.remove("active"));
+      b.classList.add("active");
+    });
+    const sync = () => { document.getElementById("qVal").textContent = qty; document.getElementById("btnPrice").textContent = money(p.price*qty); };
+    document.getElementById("qMinus").onclick = () => { qty = Math.max(1, qty-1); sync(); };
+    document.getElementById("qPlus").onclick  = () => { qty++; sync(); };
+    document.getElementById("addBtn").onclick = () => addToCart(p.id, qty);
+    document.getElementById("buyNow").onclick = () => { addToCart(p.id, qty); setTimeout(checkout, 400); };
+
+    // related
+    const rel = PRODUCTS.filter(x => x.id !== p.id && x.gender === p.gender).slice(0,4);
+    const pool = rel.length >= 4 ? rel : [...rel, ...PRODUCTS.filter(x=>x.id!==p.id && !rel.includes(x))].slice(0,4);
+    renderGrid(document.getElementById("related"), pool);
+  }
+</script>
+</body>
+</html>
