@@ -42,7 +42,7 @@ const PRODUCTS = [
     name: "1 Million",
     inspired: "Inspired by Paco Rabanne 1 Million",
     gender: "Men",
-    price: 1499,
+    price: 2000,
     rating: 4.8,
     bestseller: true,
     notes: ["Blood Mandarin", "Cinnamon", "Leather"],
