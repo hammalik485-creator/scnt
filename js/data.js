@@ -94,8 +94,7 @@ const PACKS = [
     count: 4,
     price: 199,
     desc: "Dior Sauvage · Creed Aventus · Dior J'adore · Coco Chanel",
-    images: [
-      img("Pack of Images/New", "pack4-1.png"), img("Pack of Images/New", "pack4-2.png"), img("Pack of Images/New", "pack4-3.png")]
+    images: [img("Pack of Images/New", "pack4-3.png"), img("Pack of Images/New", "pack4-1.png"), img("Pack of Images/New", "pack4-2.png")]
   },
   {
     id: "pack-8-collection",
@@ -104,7 +103,6 @@ const PACKS = [
     count: 8,
     price: 360,
     desc: "Dior Sauvage · Creed Aventus · Bleu de Chanel · 1 Million · Coco Chanel · Dior J'adore · Gucci Flora · Dior Poison",
-    images: [
-      img("Pack of Images/New", "pack8-1.png"), img("Pack of Images/New", "pack8-2.png"), img("Pack of Images/New", "pack8-3.png")]
+    images: [img("Pack of Images/New", "pack8-3.png"), img("Pack of Images/New", "pack8-1.png"), img("Pack of Images/New", "pack8-2.png")]
   }
 ];
