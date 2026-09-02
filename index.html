@@ -37,39 +37,16 @@
   <div class="wrap trust-grid" id="trustGrid"></div>
 </div>
 
-<!-- MEN PACKS -->
-<section class="bundles section" style="padding-top:clamp(2.5rem,5vw,4rem)">
+<!-- ALL PACKS (shop-style with filters) -->
+<section class="section" style="padding-top:clamp(2.5rem,5vw,4rem)">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">For Him</span>
-      <h2>Men's Packs</h2>
-      <p>Bold combos for the modern man.</p>
+      <span class="eyebrow">Combo Packs</span>
+      <h2 id="homePacksTitle">All Packs</h2>
+      <p id="homePacksSub">Curated packs at special prices — free delivery all over Saudi Arabia.</p>
     </div>
-    <div class="product-grid" id="menPacks"></div>
-  </div>
-</section>
-
-<!-- WOMEN PACKS -->
-<section class="section" style="padding-top:0">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">For Her</span>
-      <h2>Women's Packs</h2>
-      <p>Elegant sets she'll love.</p>
-    </div>
-    <div class="product-grid" id="womenPacks"></div>
-  </div>
-</section>
-
-<!-- MIXED / COMPLETE -->
-<section class="section" style="padding-top:0">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Share & Save</span>
-      <h2>Mixed & Complete Packs</h2>
-      <p>The best of both — and the full collection.</p>
-    </div>
-    <div class="product-grid" id="mixedPacks"></div>
+    <div class="filters" id="homeFilters" style="display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.2rem"></div>
+    <div class="product-grid" id="homePacksGrid"></div>
   </div>
 </section>
 
@@ -88,9 +65,38 @@
   ].map(([i,t]) => `<div class="trust-item">${i}<span>${t}</span></div>`).join("");
 
   // Grids
-  renderGrid(document.getElementById("menPacks"), PACKS.filter(p => p.gender === "Men"));
-  renderGrid(document.getElementById("womenPacks"), PACKS.filter(p => p.gender === "Women"));
-  renderGrid(document.getElementById("mixedPacks"), PACKS.filter(p => p.gender === "Unisex"));
+  // Shop-style filterable pack grid
+  let homeGender = "All";
+  const homeDefs = [
+    { key: "All",    label: "All Packs" },
+    { key: "Men",    label: "Men" },
+    { key: "Women",  label: "Women" },
+    { key: "Unisex", label: "Mixed & Complete" }
+  ];
+  const homeTitles = {
+    "All":    ["All Packs", "Curated packs at special prices — free delivery all over Saudi Arabia."],
+    "Men":    ["Men's Packs", "Bold combos for the modern man."],
+    "Women":  ["Women's Packs", "Elegant sets she'll love."],
+    "Unisex": ["Mixed & Complete Packs", "The best of both — and the full collection."]
+  };
+  function renderHomeFilters() {
+    document.getElementById("homeFilters").innerHTML = homeDefs.map(f =>
+      `<button class="chip ${homeGender===f.key?'active':''}" data-f="${f.key}">${f.label}</button>`
+    ).join("");
+    document.querySelectorAll("#homeFilters .chip").forEach(c => c.onclick = () => {
+      homeGender = c.dataset.f;
+      applyHome();
+    });
+  }
+  function applyHome() {
+    let list = [...PACKS];
+    if (homeGender !== "All") list = list.filter(p => p.gender === homeGender);
+    renderGrid(document.getElementById("homePacksGrid"), list);
+    document.getElementById("homePacksTitle").textContent = homeTitles[homeGender][0];
+    document.getElementById("homePacksSub").textContent = homeTitles[homeGender][1];
+    renderHomeFilters();
+  }
+  applyHome();
   observeReveals();
 </script>
 </body>
