@@ -37,15 +37,39 @@
   <div class="wrap trust-grid" id="trustGrid"></div>
 </div>
 
-<!-- BUNDLES -->
+<!-- MEN PACKS -->
 <section class="bundles section" style="padding-top:clamp(2.5rem,5vw,4rem)">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">Combo Offers</span>
-      <h2>All Packs</h2>
-      <p>Every combo offer in one place.</p>
+      <span class="eyebrow">For Him</span>
+      <h2>Men's Packs</h2>
+      <p>Bold combos for the modern man.</p>
     </div>
-    <div class="product-grid" id="packGrid"></div>
+    <div class="product-grid" id="menPacks"></div>
+  </div>
+</section>
+
+<!-- WOMEN PACKS -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">For Her</span>
+      <h2>Women's Packs</h2>
+      <p>Elegant sets she'll love.</p>
+    </div>
+    <div class="product-grid" id="womenPacks"></div>
+  </div>
+</section>
+
+<!-- MIXED / COMPLETE -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Share & Save</span>
+      <h2>Mixed & Complete Packs</h2>
+      <p>The best of both — and the full collection.</p>
+    </div>
+    <div class="product-grid" id="mixedPacks"></div>
   </div>
 </section>
 
@@ -64,7 +88,9 @@
   ].map(([i,t]) => `<div class="trust-item">${i}<span>${t}</span></div>`).join("");
 
   // Grids
-  renderGrid(document.getElementById("packGrid"), PACKS);
+  renderGrid(document.getElementById("menPacks"), PACKS.filter(p => p.gender === "Men"));
+  renderGrid(document.getElementById("womenPacks"), PACKS.filter(p => p.gender === "Women"));
+  renderGrid(document.getElementById("mixedPacks"), PACKS.filter(p => p.gender === "Unisex"));
   observeReveals();
 </script>
 </body>
