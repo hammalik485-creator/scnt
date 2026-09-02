@@ -2,7 +2,7 @@
    SCNT — App logic: cart, rendering, checkout
    ============================================================ */
 
-const money = n => SITE.currency + " " + Number(n).toLocaleString("en-PK");
+const money = n => "SAR " + Number(n).toLocaleString("en-US");
 const enc = p => encodeURI(p);                       // safe image src (spaces -> %20)
 const ALL = [...PRODUCTS, ...PACKS];
 const findItem = id => ALL.find(p => p.id === id);
@@ -134,12 +134,9 @@ function updateCartUI() {
   if (foot) {
     foot.style.display = "block";
     const total = cartTotal();
-    const remain = SITE.freeShipOver - total;
     foot.querySelector("#subTotal").textContent = money(total);
     const hint = foot.querySelector("#shipHint");
-    hint.textContent = remain > 0
-      ? `Add ${money(remain)} more for FREE delivery`
-      : "🎉 You've unlocked FREE delivery!";
+    hint.textContent = "🚚 Free Delivery All Over Saudi Arabia 🇸🇦";
   }
 }
 
@@ -156,8 +153,8 @@ function checkout() {
   });
   const total = cartTotal();
   msg += `\n*Total: ${money(total)}*`;
-  msg += total >= SITE.freeShipOver ? `\nDelivery: FREE` : `\n(+ delivery charges)`;
-  msg += `\n\nName:\nAddress:\nPhone:`;
+  msg += `\nDelivery: FREE (all over Saudi Arabia)`;
+  msg += `\n\n💵 Cash on Delivery Available\n\nName:\nAddress:\nPhone:`;
   window.open(`https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank");
 }
 
@@ -194,7 +191,7 @@ function observeReveals() {
 function buildChrome(active) {
   const logo = "logos stuff/logo transparent drop shadow.png";
   document.getElementById("site-header").innerHTML = `
-    <div class="topbar">Free delivery on orders over <b>${money(SITE.freeShipOver)}</b> · Cash on Delivery available</div>
+    <div class="topbar">Free Delivery All Over Saudi Arabia 🇸🇦 · Cash on Delivery available</div>
     <header class="header">
       <div class="wrap nav">
         <div class="nav-left">
