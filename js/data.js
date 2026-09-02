@@ -95,10 +95,7 @@ const PACKS = [
     price: 199,
     desc: "Dior Sauvage · Creed Aventus · Dior J'adore · Coco Chanel",
     images: [
-      img("Pack of Images/Jadore + Coco Mademoiselle + Flora", "Jadore + Coco Mademoiselle + Flora (2).png"),
-      img("Pack of Images/Jadore + Coco Mademoiselle + Flora", "Jadore + Coco Mademoiselle + Flora(1).png"),
-      img("Pack of Images/Jadore + Coco Mademoiselle + Flora", "Jadore + Coco Mademoiselle + Flora.png")
-    ]
+      img("Pack of Images/New", "pack4-1.png"), img("Pack of Images/New", "pack4-2.png"), img("Pack of Images/New", "pack4-3.png")]
   },
   {
     id: "pack-8-collection",
@@ -108,9 +105,6 @@ const PACKS = [
     price: 360,
     desc: "Dior Sauvage · Creed Aventus · Bleu de Chanel · 1 Million · Coco Chanel · Dior J'adore · Gucci Flora · Dior Poison",
     images: [
-      img("Pack of Images/Jadore + Coco Mademoiselle + Flora + Poison", "Jadore + Coco Mademoiselle + Flora + Poison.png"),
-      img("Pack of Images/svg cred  mil blu", "svg cred  mil blu.png"),
-      img("Pack of Images/jadore, coco", "jadore, coco (2).png")
-    ]
+      img("Pack of Images/New", "pack8-1.png"), img("Pack of Images/New", "pack8-2.png"), img("Pack of Images/New", "pack8-3.png")]
   }
 ];
