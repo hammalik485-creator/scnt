@@ -23,45 +23,6 @@ const PRODUCTS = [];  /* singles are not sold — combo packs only */
 /* Perfume combo offers — the only things sold on the site */
 const PACKS = [
   {
-    id: "pack-4-men",
-    name: "Pack of 4 — Men",
-    gender: "Men",
-    count: 4,
-    price: 199,
-    desc: "Dior Sauvage · Creed Aventus · Bleu de Chanel · 1 Million",
-    images: [
-      img("Pack of Images/svg cred  mil blu", "svg cred  mil blu (2).png"),
-      img("Pack of Images/svg cred  mil blu", "svg cred  mil blu.png"),
-      img("Pack of Images/svg cred  mil blu", "svg cred  mil blu (3).png")
-    ]
-  },
-  {
-    id: "pack-4-women",
-    name: "Pack of 4 — Women",
-    gender: "Women",
-    count: 4,
-    price: 199,
-    desc: "Coco Chanel · Dior J'adore · Gucci Flora · Dior Poison",
-    images: [
-      img("Pack of Images/Jadore + Coco Mademoiselle + Flora + Poison", "Jadore + Coco Mademoiselle + Flora + Poison (2).png"),
-      img("Pack of Images/Jadore + Coco Mademoiselle + Flora + Poison", "Jadore + Coco Mademoiselle + Flora + Poison (3).png"),
-      img("Pack of Images/Jadore + Coco Mademoiselle + Flora + Poison", "Jadore + Coco Mademoiselle + Flora + Poison.png")
-    ]
-  },
-  {
-    id: "pack-4-mixed",
-    name: "Pack of 4 — Mixed",
-    gender: "Unisex",
-    count: 4,
-    price: 199,
-    desc: "Dior Sauvage · Creed Aventus · Dior J'adore · Coco Chanel",
-    images: [
-      img("Pack of Images/Jadore + Coco Mademoiselle + Flora", "Jadore + Coco Mademoiselle + Flora (2).png"),
-      img("Pack of Images/Jadore + Coco Mademoiselle + Flora", "Jadore + Coco Mademoiselle + Flora(1).png"),
-      img("Pack of Images/Jadore + Coco Mademoiselle + Flora", "Jadore + Coco Mademoiselle + Flora.png")
-    ]
-  },
-  {
     id: "pack-2-men",
     name: "Pack of 2 — Men",
     gender: "Men",
@@ -98,6 +59,45 @@ const PACKS = [
       img("Pack of Images/svg cred  mil", "svg cred  mil (2).png"),
       img("Pack of Images/svg cred  mil", "svg cred  mil.png"),
       img("Pack of Images/svg cred  mil", "svg cred  mil (3).png")
+    ]
+  },
+  {
+    id: "pack-4-men",
+    name: "Pack of 4 — Men",
+    gender: "Men",
+    count: 4,
+    price: 199,
+    desc: "Dior Sauvage · Creed Aventus · Bleu de Chanel · 1 Million",
+    images: [
+      img("Pack of Images/svg cred  mil blu", "svg cred  mil blu (2).png"),
+      img("Pack of Images/svg cred  mil blu", "svg cred  mil blu.png"),
+      img("Pack of Images/svg cred  mil blu", "svg cred  mil blu (3).png")
+    ]
+  },
+  {
+    id: "pack-4-women",
+    name: "Pack of 4 — Women",
+    gender: "Women",
+    count: 4,
+    price: 199,
+    desc: "Coco Chanel · Dior J'adore · Gucci Flora · Dior Poison",
+    images: [
+      img("Pack of Images/Jadore + Coco Mademoiselle + Flora + Poison", "Jadore + Coco Mademoiselle + Flora + Poison (2).png"),
+      img("Pack of Images/Jadore + Coco Mademoiselle + Flora + Poison", "Jadore + Coco Mademoiselle + Flora + Poison (3).png"),
+      img("Pack of Images/Jadore + Coco Mademoiselle + Flora + Poison", "Jadore + Coco Mademoiselle + Flora + Poison.png")
+    ]
+  },
+  {
+    id: "pack-4-mixed",
+    name: "Pack of 4 — Mixed",
+    gender: "Unisex",
+    count: 4,
+    price: 199,
+    desc: "Dior Sauvage · Creed Aventus · Dior J'adore · Coco Chanel",
+    images: [
+      img("Pack of Images/Jadore + Coco Mademoiselle + Flora", "Jadore + Coco Mademoiselle + Flora (2).png"),
+      img("Pack of Images/Jadore + Coco Mademoiselle + Flora", "Jadore + Coco Mademoiselle + Flora(1).png"),
+      img("Pack of Images/Jadore + Coco Mademoiselle + Flora", "Jadore + Coco Mademoiselle + Flora.png")
     ]
   },
   {
