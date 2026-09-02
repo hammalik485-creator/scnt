@@ -69,7 +69,7 @@
         </div>
         <a class="btn wa-btn btn-block btn-lg" id="buyNow">${IC.wa} Buy Now on WhatsApp</a>
         <div class="pdp-meta" style="margin-top:1.6rem">
-          <div>${IC.truck}<span>Free delivery on orders over ${money(SITE.freeShipOver)}</span></div>
+          <div>${IC.truck}<span>Free Delivery All Over Saudi Arabia 🇸🇦</span></div>
           <div>${IC.gift}<span>Cash on Delivery available nationwide</span></div>
           <div>${IC.shield}<span>Premium long-lasting oils · 50ml</span></div>
         </div>
@@ -89,8 +89,7 @@
     document.getElementById("buyNow").onclick = () => { addToCart(p.id, qty); setTimeout(checkout, 400); };
 
     // related
-    const rel = PRODUCTS.filter(x => x.id !== p.id && x.gender === p.gender).slice(0,4);
-    const pool = rel.length >= 4 ? rel : [...rel, ...PRODUCTS.filter(x=>x.id!==p.id && !rel.includes(x))].slice(0,4);
+    const pool = PACKS.filter(x => x.id !== p.id).slice(0,4);
     renderGrid(document.getElementById("related"), pool);
   }
 </script>
