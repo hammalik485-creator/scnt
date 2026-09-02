@@ -7,7 +7,6 @@ const SITE = {
   tagline: "Bold · Elegant · Unforgettable",
   // WhatsApp number (country code + number, digits only)
   whatsapp: "966568526824",
-  email: "info@scntperfume.com",
   currency: "SAR",
   freeShipOver: 0,   // delivery is always free across Saudi Arabia
   imageBase: "Images/"
