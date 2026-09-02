@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop All Fragrances | SCNT</title>
+<title>Combo Packs Fragrances | SCNT</title>
 <meta name="description" content="Browse every SCNT fragrance — men's, women's, unisex and gift bundles. Luxury-inspired perfumes with free delivery over Rs. 3,000.">
 <link rel="icon" href="logos stuff/fav icon green.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
 
 <div class="page-head">
   <div class="wrap">
-    <div class="breadcrumb"><a href="index.html">Home</a> / <span id="crumb">Shop All</span></div>
+    <div class="breadcrumb"><a href="index.html">Home</a> / <span id="crumb">Combo Packs</span></div>
     <h1 id="pageTitle">All Fragrances</h1>
     <p id="pageSub">Find your signature scent.</p>
   </div>
@@ -48,65 +48,38 @@
 <script>
   buildChrome("shop");
 
-  const params = new URLSearchParams(location.search);
-  let genderFilter = params.get("g") || "All";
-  let catFilter = params.get("cat") || "all";      // all | singles | packs
+  let catFilter = "packs";
   let sortMode = "featured";
 
   const filterDefs = [
-    { key: "All",   label: "All" },
-    { key: "Men",   label: "Men" },
-    { key: "Women", label: "Women" },
-    { key: "Unisex",label: "Unisex" },
-    { key: "packs", label: "Bundles" }
+    { key: "packs", label: "All Packs" }
   ];
-
-  function currentActive() { return catFilter === "packs" ? "packs" : genderFilter; }
 
   function renderFilters() {
     document.getElementById("filters").innerHTML = filterDefs.map(f =>
-      `<button class="chip ${currentActive()===f.key?'active':''}" data-f="${f.key}">${f.label}</button>`
+      `<button class="chip active" data-f="${f.key}">${f.label}</button>`
     ).join("");
-    document.querySelectorAll("#filters .chip").forEach(c => c.onclick = () => {
-      if (c.dataset.f === "packs") { catFilter = "packs"; genderFilter = "All"; }
-      else { catFilter = "all"; genderFilter = c.dataset.f; }
-      apply();
-    });
   }
 
   function apply() {
-    let list;
-    if (catFilter === "packs") list = [...PACKS];
-    else {
-      list = [...PRODUCTS];
-      if (genderFilter !== "All") list = list.filter(p => p.gender === genderFilter);
-    }
-    // sort
+    let list = [...PACKS];
     if (sortMode === "low")  list.sort((a,b)=>a.price-b.price);
     if (sortMode === "high") list.sort((a,b)=>b.price-a.price);
-    if (sortMode === "rating") list.sort((a,b)=>(b.rating||0)-(a.rating||0));
-    if (sortMode === "featured") list.sort((a,b)=>(b.bestseller?1:0)-(a.bestseller?1:0));
+    if (sortMode === "featured") list.sort((a,b)=>(b.count||0)-(a.count||0));
 
     const grid = document.getElementById("shopGrid");
     grid.innerHTML = list.map(card).join("");
     observeReveals();
     document.getElementById("empty").style.display = list.length ? "none" : "block";
-    document.getElementById("resultCount").textContent = list.length + " product" + (list.length!==1?"s":"");
+    document.getElementById("resultCount").textContent = list.length + " pack" + (list.length!==1?"s":"");
 
-    // titles
-    let title = "All Fragrances", sub = "Find your signature scent.", crumb = "Shop All";
-    if (catFilter === "packs") { title = "Gift Bundles"; sub = "Curated sets at a special price."; crumb = "Bundles"; }
-    else if (genderFilter === "Men")   { title = "Men's Fragrances"; sub = "Bold, fresh and confident scents for him."; crumb = "Men"; }
-    else if (genderFilter === "Women") { title = "Women's Fragrances"; sub = "Elegant, radiant scents for her."; crumb = "Women"; }
-    else if (genderFilter === "Unisex"){ title = "Unisex & Oud"; sub = "Rich, versatile scents for everyone."; crumb = "Unisex"; }
-    document.getElementById("pageTitle").textContent = title;
-    document.getElementById("pageSub").textContent = sub;
-    document.getElementById("crumb").textContent = crumb;
+    document.getElementById("pageTitle").textContent = "Perfume Combo Offers";
+    document.getElementById("pageSub").textContent = "Curated packs at special prices — free delivery all over Saudi Arabia.";
+    document.getElementById("crumb").textContent = "Combo Packs";
     renderFilters();
   }
 
   document.getElementById("sort").onchange = e => { sortMode = e.target.value; apply(); };
-  renderFilters();
   apply();
 </script>
 </body>
