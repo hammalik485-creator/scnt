@@ -231,7 +231,6 @@ function buildChrome(active) {
             <li><a href="https://wa.me/${SITE.whatsapp}" target="_blank">Contact / WhatsApp</a></li>
             <li><a href="shipping.html">Shipping & Returns</a></li>
             <li><a href="faq.html">FAQs</a></li>
-            <li><a href="mailto:${SITE.email}">${SITE.email}</a></li>
           </ul></div>
         </div>
         <div class="footer-bottom">
