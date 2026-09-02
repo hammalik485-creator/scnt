@@ -48,21 +48,28 @@
 <script>
   buildChrome("shop");
 
-  let catFilter = "packs";
+  let genderFilter = "All";
   let sortMode = "featured";
 
   const filterDefs = [
-    { key: "packs", label: "All Packs" }
+    { key: "All",    label: "All Packs" },
+    { key: "Men",    label: "Men" },
+    { key: "Women",  label: "Women" },
+    { key: "Unisex", label: "Mixed & Complete" }
   ];
 
   function renderFilters() {
     document.getElementById("filters").innerHTML = filterDefs.map(f =>
-      `<button class="chip active" data-f="${f.key}">${f.label}</button>`
+      `<button class="chip ${genderFilter===f.key?'active':''}" data-f="${f.key}">${f.label}</button>`
     ).join("");
+    document.querySelectorAll("#filters .chip").forEach(c => c.onclick = () => {
+      genderFilter = c.dataset.f; apply();
+    });
   }
 
   function apply() {
     let list = [...PACKS];
+    if (genderFilter !== "All") list = list.filter(p => p.gender === genderFilter);
     if (sortMode === "low")  list.sort((a,b)=>a.price-b.price);
     if (sortMode === "high") list.sort((a,b)=>b.price-a.price);
     if (sortMode === "featured") list.sort((a,b)=>(b.count||0)-(a.count||0));
@@ -73,8 +80,14 @@
     document.getElementById("empty").style.display = list.length ? "none" : "block";
     document.getElementById("resultCount").textContent = list.length + " pack" + (list.length!==1?"s":"");
 
-    document.getElementById("pageTitle").textContent = "Perfume Combo Offers";
-    document.getElementById("pageSub").textContent = "Curated packs at special prices — free delivery all over Saudi Arabia.";
+    const titles = {
+      "All":    ["All Packs", "Curated packs at special prices — free delivery all over Saudi Arabia."],
+      "Men":    ["Men's Packs", "Bold combos for the modern man."],
+      "Women":  ["Women's Packs", "Elegant sets she'll love."],
+      "Unisex": ["Mixed & Complete Packs", "The best of both — and the full collection."]
+    };
+    document.getElementById("pageTitle").textContent = titles[genderFilter][0];
+    document.getElementById("pageSub").textContent = titles[genderFilter][1];
     document.getElementById("crumb").textContent = "Combo Packs";
     renderFilters();
   }
