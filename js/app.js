@@ -199,7 +199,7 @@ function buildChrome(active) {
           <nav class="nav-links">
             <a href="index.html" class="${active==='home'?'active':''}">Home</a>
             <a href="shop.html" class="${active==='shop'?'active':''}">Shop All</a>
-            <a href="shop.html?cat=packs">Combo Packs</a>
+
           </nav>
         </div>
         <a class="brand-logo" href="index.html"><img src="${enc(logo)}" alt="${SITE.brand}" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-word',textContent:'SCNT'}))"></a>
@@ -225,7 +225,7 @@ function buildChrome(active) {
           </div>
           <div><h4>Shop</h4><ul>
             <li><a href="shop.html">All Fragrances</a></li>
-            <li><a href="shop.html?cat=packs">Combo Packs</a></li>
+
           </ul></div>
           <div><h4>Help</h4><ul>
             <li><a href="https://wa.me/${SITE.whatsapp}" target="_blank">Contact / WhatsApp</a></li>
@@ -269,7 +269,7 @@ function buildChrome(active) {
         <button class="close-x" id="closeMobile" aria-label="Close">✕</button>
         <a href="index.html">Home</a>
         <a href="shop.html">Shop All</a>
-        <a href="shop.html?cat=packs">Combo Packs</a>
+
       </nav>`;
     document.body.appendChild(extra);
   }
